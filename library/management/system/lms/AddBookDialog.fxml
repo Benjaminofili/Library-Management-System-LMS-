@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<DialogPane prefHeight="346.0" prefWidth="572.0" stylesheets="@../../../../css/adddialog.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.management.system.lms.AddBookDialogController">
+    
+    <headerText>Add New Book</headerText>
+    
+    <content>
+        <GridPane hgap="10" prefHeight="283.0" prefWidth="572.0" vgap="10">
+            <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            
+            <Label text="Author:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="authorField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            
+            <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="priceField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
+            <Label text="ISBN:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="isbnField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            
+            <Label text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <ComboBox fx:id="existingCategoriesCombo" prefWidth="200" promptText="Select category" styleClass="combo-box" />
+                <Label prefHeight="30.0" prefWidth="35.0" styleClass="or-label" text="OR" />
+                <TextField fx:id="categoryField" prefWidth="200" promptText="Enter new category" styleClass="text-field" />
+            </HBox>
+            
+           <Label text="Quantity:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="quantityField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+         
+            <Label text="Availability:" GridPane.rowIndex="6" />
+            <CheckBox fx:id="availabilityCheckBox" selected="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </content>
+</DialogPane>

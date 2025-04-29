@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600" minWidth="800" prefHeight="800" prefWidth="1200" stylesheets="@../../../../css/dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.management.system.lms.DashboardController">
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox prefHeight="722.0" prefWidth="246.0" spacing="20" style="-fx-background-color: #34495E;">
+            <padding>
+                <Insets bottom="30" left="20" right="20" top="30" />
+            </padding>      
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="📚 Library" />          
+            <VBox prefHeight="266.0" prefWidth="190.0" spacing="10" style="-fx-background-color: #2C3E50; -fx-background-radius: 5; -fx-padding: 15;">
+                <Button fx:id="dashboardButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Dashboard" />           
+                <Button fx:id="readerManagementButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Member Management" />                
+                <Button fx:id="bookManagementButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Book Management" />               
+                <Button fx:id="reportsButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Reports" />               
+                <Button fx:id="settingsButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Settings" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Top Header -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" prefHeight="60" spacing="15" style="-fx-background-color: #ECF0F1; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 6, 0, 0, 2);">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15" />
+            </padding>           
+            <Label fx:id="adminNameLabel" style="-fx-text-fill: #2C3E50; -fx-font-size: 16px; -fx-font-weight: bold;" styleClass="admin-name" text="Welcome Back, Admin">
+                <padding>
+                    <Insets right="10" />
+                </padding>
+            </Label>
+              <ImageView fx:id="profilePic" fitHeight="45.0" fitWidth="45.0" preserveRatio="true">
+                  <image>
+                      <Image url="@../../../../img/account_circle_48dp_000000_FILL1_wght400_GRAD0_opsz48.png" />
+                  </image>
+              </ImageView>
+        </HBox>
+    </top>
+
+    <!-- MAIN CONTENT -->
+    <center>
+        <VBox spacing="30">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30" />
+            </padding>
+
+            <Label fx:id="adminNameLabel1" style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Welcome Back,  " />
+
+            <!-- STAT CARDS -->
+            <HBox spacing="25">
+                <!-- Each stat card uses a single Label with inline emoji -->
+                <VBox alignment="CENTER" prefWidth="200" spacing="8" style="-fx-background-color: #3498DB; -fx-background-radius: 12;">
+                    <padding>
+                        <Insets bottom="15" left="15" right="15" top="15" />
+                    </padding>
+                    <Label style="-fx-font-size: 28px;">
+                        <graphic>
+                            <ImageView fitHeight="52.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../../img/menu_book_48dp_000000_FILL0_wght400_GRAD0_opsz48.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Label>
+                    <Label style="-fx-text-fill: white;" text="Total Books" />
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 18px;" text="1,245" />
+                </VBox>
+                <VBox alignment="CENTER" prefWidth="200" spacing="8" style="-fx-background-color: #2ECC71; -fx-background-radius: 12;">
+                    <padding>
+                        <Insets bottom="15" left="15" right="15" top="15" />
+                    </padding>
+                    <Label style="-fx-font-size: 28px;">
+                        <graphic>
+                            <ImageView fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../../img/library_books_48dp_000000_FILL0_wght400_GRAD0_opsz48.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Label>
+                    <Label style="-fx-text-fill: white;" text="Issued Books" />
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 18px;" text="320" />
+                </VBox>
+                <VBox alignment="CENTER" prefWidth="200" spacing="8" style="-fx-background-color: #F1C40F; -fx-background-radius: 12;">
+                    <padding>
+                        <Insets bottom="15" left="15" right="15" top="15" />
+                    </padding>
+                    <Label prefHeight="62.0" prefWidth="48.0" style="-fx-font-size: 28px;">
+                        <graphic>
+                            <ImageView fitHeight="50.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../../img/groups_48dp_000000_FILL0_wght400_GRAD0_opsz48.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Label>
+                    <Label style="-fx-text-fill: white;" text="Registered Readers" />
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 18px;" text="890" />
+                </VBox>
+                <VBox alignment="CENTER" prefWidth="200" spacing="8" style="-fx-background-color: #E74C3C; -fx-background-radius: 12;">
+                    <padding>
+                        <Insets bottom="15" left="15" right="15" top="15" />
+                    </padding>
+                    <Label style="-fx-font-size: 28px;">
+                        <graphic>
+                            <ImageView fitHeight="45.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../../img/warning_48dp_000000_FILL0_wght400_GRAD0_opsz48.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Label>
+                    <Label style="-fx-text-fill: white;" text="Overdue Books" />
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 18px;" text="12" />
+                </VBox>
+            </HBox>
+
+            <!-- ADD BOOK SECTION -->
+            <TitledPane expanded="true" prefHeight="437.0" prefWidth="910.0" text="Manage Books">
+                <VBox spacing="20">
+                    <padding>
+                        <Insets bottom="25" left="25" right="25" top="25" />
+                    </padding>
+                    <TabPane prefHeight="400" prefWidth="950">
+                        <!-- Add/Update Books Tab -->
+                        <Tab text="Add Books">
+                            <AnchorPane>
+                                <VBox spacing="20" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <HBox spacing="15">
+                                        <TextField fx:id="bookNameField" prefWidth="300" promptText="Book Name" />
+                                        <TextField fx:id="authorField" prefWidth="300" promptText="Author" />
+                                        <TextField fx:id="priceField" prefWidth="150" promptText="Price" />
+                                    </HBox>
+                                    <HBox spacing="15">
+                                        <TextField fx:id="isbnField" prefWidth="300" promptText="ISBN" />
+                                        <TextField fx:id="categoryField" prefWidth="300" promptText="Category" />
+                                    </HBox>
+                                    <HBox spacing="15">
+                                        <Button fx:id="addBookButton" onAction="#handleAddBook" prefWidth="200" style="-fx-background-color: #2ECC71; -fx-text-fill: white;">
+                                            <graphic>
+                                                <Label style="-fx-text-fill: white;" text="➕" />
+                                            </graphic>
+                                            <text>Add New Book</text>
+                                        </Button>
+                                        <Button fx:id="updateBookButton" onAction="#redirectToBookManagement" prefWidth="200" style="-fx-background-color: #3498DB; -fx-text-fill: white;">
+                                            <graphic>
+                                                <Label style="-fx-text-fill: white;" text="✏" />
+                                            </graphic>
+                                            <text>Update Book</text>
+                                        </Button>
+                                    </HBox>
+                                </VBox>
+                            </AnchorPane>
+                        </Tab>
+
+                        <!-- Book Catalogue Tab -->
+                        <Tab text="Book Catalogue">
+                            <AnchorPane>
+                                <VBox spacing="15" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <!-- Search Bar and Filters -->
+                                    <HBox spacing="10">
+                                        <TextField fx:id="searchField" prefWidth="400" promptText="Search by Name, Author, ISBN" />
+                                        <ComboBox fx:id="filterDropdown" prefWidth="200" promptText="Filter by Category" />
+                                        <Button fx:id="searchButton" onAction="#handleSearch" prefWidth="100" style="-fx-background-color: #F39C12; -fx-text-fill: white;" text="Search" />
+                                    </HBox>
+
+                                    <!-- Book Table -->
+                                    <TableView fx:id="bookTable" prefHeight="208.0" prefWidth="835.0">
+                                        <columns>
+                                            <TableColumn fx:id="bookNameColumn" prefWidth="171.0" text="Book Name" />
+                                            <TableColumn fx:id="authorColumn" prefWidth="161.0" text="Author" />
+                                            <TableColumn fx:id="priceColumn" minWidth="8.0" prefWidth="86.0" text="Price" />
+                                            <TableColumn fx:id="isbnColumn" minWidth="8.0" prefWidth="125.0" text="ISBN" />
+                                            <TableColumn fx:id="categoryColumn" prefWidth="115.0" text="Category" />
+                                            <TableColumn fx:id="availabilityColumn" prefWidth="176.0" text="Availability" />
+                                        </columns>
+                                    </TableView>
+                                </VBox>
+                            </AnchorPane>
+                        </Tab>
+                    </TabPane>
+                </VBox>
+            </TitledPane>
+            
+          
+            <!-- QUICK ACTIONS -->
+            <HBox alignment="CENTER" spacing="15">
+                <Button fx:id="issueBookButton" prefWidth="200" style="-fx-background-color: #1ABC9C; -fx-text-fill: white;">
+                    <graphic>
+                        <Label>
+                            <graphic>
+                                <ImageView fitHeight="27.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../../img/upload_48dp_000000_FILL1_wght400_GRAD0_opsz48.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                    </graphic>
+                    <text>Issue Book</text>
+                </Button>
+                <Button fx:id="returnBookButton" prefWidth="200" style="-fx-background-color: #E67E22; -fx-text-fill: white;">
+                    <graphic>
+                        <Label>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../../img/download_48dp_000000_FILL1_wght400_GRAD0_opsz48.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                    </graphic>
+                    <text>Return Book</text>
+                </Button>
+            </HBox>
+
+            
+        </VBox>
+    </center>
+</BorderPane>

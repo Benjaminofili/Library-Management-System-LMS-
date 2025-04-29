@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="1024" maxWidth="1440" minHeight="600" minWidth="800" prefHeight="800" prefWidth="1200" stylesheets="@../../../../css/membermanagement.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.management.system.lms.MemberManagementController">
+
+    <!-- Left Sidebar -->
+<left>
+    <VBox prefHeight="740.0" prefWidth="242.0" spacing="20" style="-fx-background-color: #34495E;">
+        <padding>
+            <Insets bottom="30" left="20" right="20" top="30" />
+        </padding>
+        <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="📚 Library" />
+        <VBox prefHeight="266.0" prefWidth="190.0" spacing="10" style="-fx-background-color: #2C3E50; -fx-background-radius: 5; -fx-padding: 15;">
+            <Button fx:id="dashboardButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Dashboard" />
+            <Button fx:id="memberManagementButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Member Management" />
+            <Button fx:id="bookManagementButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Book Management" />
+            <Button fx:id="reportsButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Reports" />
+            <Button onAction="#handleNavigation" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Settings" />
+        </VBox>
+    </VBox>
+</left>
+
+    <!-- Top Header -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" prefHeight="60" spacing="15" style="-fx-background-color: #ECF0F1; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 6, 0, 0, 2);">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15" />
+            </padding>
+            <Label fx:id="adminNameLabel" style="-fx-text-fill: #2C3E50; -fx-font-size: 16px; -fx-font-weight: bold;" text="Admin" />
+            <ImageView fx:id="profilePic" fitHeight="45.0" fitWidth="45.0" preserveRatio="true" />
+        </HBox>
+    </top>
+
+    <!-- Center Content: Member Management Tables -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="15" style="-fx-padding: 20;">
+            <!-- Header Area -->
+            <HBox alignment="CENTER" spacing="10">
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Member Management" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="addMemberButton" onAction="#openAddMemberDialog" style="-fx-background-color: #3498DB; -fx-text-fill: white;" text="Add Member" />
+            </HBox>
+
+            <!-- Borrowing Members Table -->
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10px;" text="Book Borrowers" />
+            <TableView fx:id="memberTable" prefHeight="300.0" prefWidth="918.0">
+                <columns>
+                    <TableColumn fx:id="memberIdCol" prefWidth="50" text="ID" />
+                    <TableColumn fx:id="firstNameCol" prefWidth="120" text="First Name" />
+                    <TableColumn fx:id="lastNameCol" prefWidth="120" text="Last Name" />
+                    <TableColumn fx:id="emailCol" prefWidth="193.0" text="Email" />
+                    <TableColumn fx:id="phoneCol" prefWidth="109.0" text="Phone" />
+                    <TableColumn fx:id="borrowedBooksCol" prefWidth="100" text="Borrowed Books" />
+                    <TableColumn fx:id="overdueBooksCol" prefWidth="100" text="Overdue Books" />
+                    <TableColumn fx:id="actionsCol" prefWidth="135.0" text="Actions" />
+                </columns>
+            </TableView>
+
+            <!-- Pending Librarians Table -->
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10px;" text="Pending Librarians" />
+            <TableView fx:id="librarianTable" prefHeight="250.0" prefWidth="918.0">
+                <columns>
+                    <TableColumn fx:id="librarianIdCol" prefWidth="50" text="ID" />
+                    <TableColumn fx:id="librarianFirstNameCol" prefWidth="120" text="First Name" />
+                    <TableColumn fx:id="librarianLastNameCol" prefWidth="120" text="Last Name" />
+                    <TableColumn fx:id="librarianEmailCol" prefWidth="193.0" text="Email" />
+                    <TableColumn fx:id="actionCol1" prefWidth="135.0" text="Actions" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

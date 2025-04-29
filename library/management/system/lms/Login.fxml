@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../../../../css/Login.css" 
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="library.management.system.lms.LoginController">
+    <children>
+        <!-- Background Pane (CSS will handle background image) -->
+        <AnchorPane fx:id="backgroundPane" layoutX="0.0" layoutY="0.0" prefHeight="800.0" prefWidth="1200.0" />
+
+        <!-- Login Container -->
+        <VBox fx:id="loginContainer" layoutX="350.0" layoutY="191.0" opacity="0.91" prefHeight="547.0" prefWidth="500.0" spacing="15" styleClass="login-box">
+            <children>
+                <Label styleClass="logo-title" text="Solomon’s Temple">
+                    <graphic>
+                        <ImageView fitHeight="92.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../img/ChatGPT%20Image%20Apr%2015,%202025,%2010_35_35%20PM.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <Label styleClass="signin-title" text="Sign In" />
+
+                <Label styleClass="form-label" text="Username" />
+                <TextField fx:id="Ufield" prefHeight="46.0" prefWidth="336.0" styleClass="text-field" />
+
+                <Label styleClass="form-label" text="Password" />
+                <PasswordField fx:id="Pfield" prefHeight="46.0" prefWidth="336.0" styleClass="password-field" />
+
+                <Hyperlink styleClass="hyperlink" text="Forgot Password" />
+                
+                <!-- Added Sign-Up Hyperlink -->
+                <Hyperlink fx:id="signUpLink" styleClass="hyperlink" text="Don't have an account? Sign up here!" onAction="#handleSignupRedirect"/>
+
+                <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="46.0" prefWidth="448.0" styleClass="login-button" text="Log in" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

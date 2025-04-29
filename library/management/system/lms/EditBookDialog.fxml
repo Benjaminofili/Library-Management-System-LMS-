@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.management.system.lms.EditBookDialogController">
+    <headerText>Edit Book Details</headerText>
+    
+    <content>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Title:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="titleField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            
+            <Label text="Author:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="authorField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            
+            <Label text="Price:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="priceField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            
+            <Label text="ISBN:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="isbnField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            
+            <Label text="Category:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="categoryField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            
+            <Label text="Quantity:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="quantityField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            
+            <Label text="Availability:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <CheckBox fx:id="availabilityCheckBox" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+</DialogPane>

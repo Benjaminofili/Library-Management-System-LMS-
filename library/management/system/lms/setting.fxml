@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="1024" maxWidth="1440" minHeight="600" minWidth="800" prefHeight="800" prefWidth="1200" stylesheets="@../../../../css/setting.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.management.system.lms.SettingController">
+
+    <!-- TOP HEADER -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" prefHeight="60" spacing="15" style="-fx-background-color: #ECF0F1;">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15" />
+            </padding>
+            <Label fx:id="adminNameLabel" style="-fx-text-fill: #2C3E50; -fx-font-size: 16px; -fx-font-weight: bold;" styleClass="admin-name" text="Welcome Back, Admin" />
+              <ImageView fx:id="profilePic" fitHeight="45.0" fitWidth="45.0" preserveRatio="true" />
+        </HBox>
+    </top>
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox prefHeight="725.0" prefWidth="241.0" spacing="20" style="-fx-background-color: #34495E;">
+            <padding>
+                <Insets bottom="30" left="20" right="20" top="30" />
+            </padding>
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="📚 Library" />
+            <VBox prefHeight="266.0" prefWidth="203.0" spacing="10" style="-fx-background-color: #2C3E50; -fx-background-radius: 5; -fx-padding: 15;">
+                <Button fx:id="dashboardButton" onAction="#handleNavigation" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Dashboard" />
+                <Button fx:id="readerManagementButton" onAction="#handleNavigation" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Member Management" />
+                <Button fx:id="bookManagementButton" onAction="#handleNavigation" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Book Management" />
+                <Button fx:id="reportsButton" onAction="#handleNavigation" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Reports" />
+                <Button fx:id="settingsButton" onAction="#handleNavigation" style="-fx-background-color: #3498DB; -fx-text-fill: white;" text=" Settings" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- MAIN CONTENT -->
+    <center>
+        <VBox spacing="25" style="-fx-background-color: #F5F6FA; -fx-padding: 20 30;">
+            
+            <!-- Page Header -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text=" Settings" />
+                <Region HBox.hgrow="ALWAYS" />
+            </HBox>
+
+            <!-- Account Information Card (includes Profile Picture and Credentials) -->
+            <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 5; -fx-padding: 20;">
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="👤 Account Information" />
+                
+                <GridPane hgap="20" vgap="15">
+                    <!-- Profile Picture -->
+                    <Label text="Profile Picture:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <ImageView fx:id="profilePicView" fitHeight="60" fitWidth="60" style="-fx-border-color: #ccc; -fx-border-radius: 5;" />
+                        <Button onAction="#handleChangeProfilePic" prefHeight="31" prefWidth="108" text="Change..." />
+                    </HBox>
+                    
+                    <!-- First Name -->
+                    <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="firstNameField" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    
+                    <!-- Last Name -->
+                    <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <TextField fx:id="lastNameField" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    
+                    <!-- Email -->
+                    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <TextField fx:id="emailField" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                    <!-- Username -->
+                    <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                    <TextField fx:id="accountUsernameField" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <!-- Password -->
+                    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                    <PasswordField fx:id="passwordField" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    
+                    <!-- Repeat Password -->
+                    <Label text="Repeat Password:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                    <PasswordField fx:id="repeatPasswordField" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" />
+                        <ColumnConstraints minWidth="200" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+
+                <!-- Update Button -->
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button onAction="#handleUpdateProfile" style="-fx-background-color: #2980B9; -fx-text-fill: white;" text="Update Profile" />
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
