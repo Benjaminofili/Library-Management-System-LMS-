@@ -1,56 +1,108 @@
-.root {
-    /*-fx-background-color: #f4f4f4;*/
-    -fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+/* Root AnchorPane */
+.root-pane {
+    -fx-background-color: transparent;
 }
 
-/* Apply background image to entire scene */
-#backgroundPane {
-    -fx-background-image: url(../img/bg0.png);
+/* Background Pane with image and overlay */
+.background-pane {
+    -fx-background-image: url("../img/bg0.png");
     -fx-background-size: cover;
     -fx-background-position: center;
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay to dim the background */
 }
 
-/* Login box styling */
-.login-box {
-    -fx-background-color: rgba(255, 255, 255, 0.9);
-    -fx-padding: 30px;
+/* Pane wrapping the login form */
+.form-pane {
+    -fx-background-color: rgba(245, 245, 220, 0.95); /* Parchment-like background with slight transparency */
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 2px;
     -fx-border-radius: 10px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0.5, 0, 0); /* Stronger shadow for prominence */
+}
+
+/* Login box styling (VBox) */
+.login-box {
+    -fx-padding: 30px;
+    -fx-background-color: transparent; /* No background, as the Pane handles it */
 }
 
 /* Text styling */
 .logo-title {
+    -fx-font-family: "Georgia";
     -fx-font-size: 27px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2d3436;
+    -fx-text-fill: #4A2C2A; /* Dark brown for a classic look */
+    -fx-alignment: center;
 }
 
 .signin-title {
+    -fx-font-family: "Georgia";
     -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #636e72;
+    -fx-text-fill: #4A2C2A;
+    -fx-alignment: center;
 }
 
 .form-label {
+    -fx-font-family: "Georgia";
     -fx-font-size: 18px;
-    -fx-text-fill: #333;
+    -fx-text-fill: #4A2C2A;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(255, 235, 205, 0.7); /* Light beige background for contrast */
+    -fx-background-radius: 3px;
+    -fx-padding: 2px 5px;
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0.5, 0, 0); /* Subtle text shadow for depth */
 }
 
+/* TextField and PasswordField styling */
 .text-field, .password-field {
-    -fx-border-color: #bdc3c7;
+    -fx-background-color: #FFF8DC; /* Light parchment background */
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 1px;
     -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Georgia";
     -fx-font-size: 16px;
+    -fx-text-fill: #4A2C2A;
+    -fx-prompt-text-fill: #808080; /* Gray prompt text */
+    -fx-padding: 8px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #DAA520; /* Goldenrod for focus state */
+    -fx-border-width: 2px;
 }
 
 /* Button styling */
 .login-button {
-    -fx-background-color: #3498db;
-    -fx-text-fill: white;
+    -fx-background-color: #8B4513; /* Saddle brown background */
+    -fx-text-fill: #FFD700; /* Gold text */
+    -fx-font-family: "Georgia";
     -fx-font-size: 18px;
+    -fx-font-weight: bold;
     -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
 }
 
-.checkbox, .hyperlink {
+.login-button:hover {
+    -fx-background-color: #A0522D; /* Lighter brown on hover */
+}
+
+/* Hyperlink styling */
+.hyperlink {
+    -fx-font-family: "Georgia";
     -fx-font-size: 14px;
-    -fx-text-fill: #555;
+    -fx-text-fill: #4682B4; /* Steel blue to match the "Sign up" link */
+    -fx-border-width: 0px;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #87CEEB; /* Light sky blue on hover */
+    -fx-underline: true;
 }

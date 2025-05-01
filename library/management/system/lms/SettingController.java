@@ -5,10 +5,10 @@
  */
 package library.management.system.lms;
 
-import Class.BookManager;
-import Class.Myconnection;
-import Class.UserIdAware;
-import Class.UserImageLoader;
+import service.BookManager;
+import data.Myconnection;
+import util.UserIdAware;
+import util.UserImageLoader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -147,6 +147,17 @@ public class SettingController implements Initializable, UserIdAware {
         }
     }
 
+
+    public void handleLogout(ActionEvent event) throws IOException {
+    // Navigate to login page
+    Parent loginRoot = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    Scene scene = new Scene(loginRoot);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    
+}
+    
     @FXML
     private void handleChangeProfilePic(ActionEvent event) {
         // Create and configure the FileChooser.

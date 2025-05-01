@@ -1,11 +1,11 @@
 package library.management.system.lms;
 
-import Class.Book;
-import Class.BookManager;
-import Class.ISBNValidator;
-import Class.Myconnection;
-import Class.UserIdAware;
-import Class.UserImageLoader;
+import model.Book;
+import service.BookManager;
+import service.ISBNValidator;
+import data.Myconnection;
+import util.UserIdAware;
+import util.UserImageLoader;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -311,6 +311,16 @@ public class DashboardController implements Initializable, UserIdAware {
         }
     }
 
+     public void handleLogout(ActionEvent event) throws IOException {
+    // Navigate to login page
+    Parent loginRoot = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    Scene scene = new Scene(loginRoot);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    
+}
+     
     private void showErrorAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);

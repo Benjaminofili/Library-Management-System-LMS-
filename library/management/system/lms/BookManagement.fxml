@@ -7,78 +7,83 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1024" maxWidth="1440" minHeight="600" minWidth="800" prefHeight="800" prefWidth="1200" stylesheets="@../../../../css/bookmanagement.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.management.system.lms.BookManagementController">
+<BorderPane maxHeight="1024" maxWidth="1440" minHeight="600" minWidth="800" prefHeight="800" prefWidth="1200" styleClass="root-pane" stylesheets="@../../../../css/bookmanagement.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.management.system.lms.BookManagementController">
+  <!-- Top Header -->
+  <top>
+    <HBox alignment="CENTER_RIGHT" prefHeight="60" spacing="15" styleClass="header">
+      <padding>
+        <Insets bottom="15" left="20" right="20" top="15" />
+      </padding>
+      <Label fx:id="adminNameLabel" styleClass="admin-name" text="Welcome Back, Admin" />
+      <ImageView fx:id="profilePic" fitHeight="45.0" fitWidth="45.0" preserveRatio="true">
+        <image>
+          <Image url="@../../../../img/account_circle_48dp_000000_FILL1_wght400_GRAD0_opsz48.png" />
+        </image>
+      </ImageView>
+    </HBox>
+  </top>
 
-    <!-- Top Header -->
-    <top>
-        <HBox alignment="CENTER_RIGHT" prefHeight="60" spacing="15" style="-fx-background-color: #ECF0F1;">
-            <padding>
-                <Insets bottom="15" left="20" right="20" top="15" />
-            </padding>
-            <Label fx:id="adminNameLabel" style="-fx-text-fill: #2C3E50; -fx-font-size: 16px; -fx-font-weight: bold;" styleClass="admin-name" text="Welcome Back, Admin" />
-              <ImageView fx:id="profilePic" fitHeight="45.0" fitWidth="45.0" preserveRatio="true" />
-        </HBox>
-    </top>
+  <!-- Left Sidebar -->
+  <left>
+    <VBox prefHeight="725.0" prefWidth="250.0" spacing="20" styleClass="sidebar">
+      <padding>
+        <Insets bottom="30" left="20" right="20" top="30" />
+      </padding>
+      <Label styleClass="sidebar-title" text="📚 Library" />
+      <VBox prefHeight="287.0" prefWidth="190.0" spacing="10" styleClass="sidebar-menu">
+        <Button fx:id="dashboardButton" onAction="#handleNavigation" styleClass="sidebar-button" text="Dashboard" />
+        <Button fx:id="readerManagementButton" onAction="#handleNavigation" styleClass="sidebar-button" text="Member Management" wrapText="true" />
+        <Button fx:id="bookManagementButton" onAction="#handleNavigation" style="-fx-background-color: #DAA520;" styleClass="sidebar-button active" text="Book Management" />
+        <Button fx:id="reportsButton" onAction="#handleNavigation" styleClass="sidebar-button" text="Reports" />
+        <Button fx:id="settingsButton" onAction="#handleNavigation" styleClass="sidebar-button" text=" Settings" />
+        <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="logout-button" text="Logout" />
+      </VBox>
+    </VBox>
+  </left>
 
-    <!-- Left Sidebar -->
-    <left>
-        <VBox prefHeight="740.0" prefWidth="242.0" spacing="20" style="-fx-background-color: #34495E;">
-            <padding>
-                <Insets bottom="30" left="20" right="20" top="30" />
-            </padding>
-            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="📚 Library" />
-            <VBox prefHeight="266.0" prefWidth="190.0" spacing="10" style="-fx-background-color: #2C3E50; -fx-background-radius: 5; -fx-padding: 15;">
-                <Button fx:id="dashboardButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Dashboard" />     
-                <Button fx:id="readerManagementButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Member Management" />               
-                <Button fx:id="bookManagementButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Book Management" />              
-                <Button fx:id="reportsButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Reports" />              
-                <Button fx:id="settingsButton" onAction="#handleNavigation" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" text="Settings" />
-            </VBox>
-        </VBox>
-    </left>
+  <!-- MAIN CONTENT AREA -->
+  <center>
+    <VBox spacing="20" styleClass="main-content">
+      <padding>
+        <Insets bottom="30" left="30" right="30" top="20" />
+      </padding>
 
-    <!-- MAIN CONTENT AREA -->
-    <center>
-        <VBox spacing="20" style="-fx-background-color: #F5F6FA;">
-            <padding>
-                <Insets bottom="30" left="30" right="30" top="20" />
-            </padding>
+      <!-- Header Section -->
+      <HBox alignment="CENTER_LEFT" spacing="20" styleClass="content-header">
+        <Label styleClass="content-title" text="Book Management" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="addBookButton" onAction="#handleAddBook" styleClass="add-book-button" text="+ Add New Book" />
+      </HBox>
 
-            <!-- Header Section -->
-            <HBox alignment="CENTER_LEFT" spacing="20">
-                <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="Book Management" />
-                <Region HBox.hgrow="ALWAYS" />
-                <Button fx:id="addBookButton" onAction="#handleAddBook" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-weight: bold;" text="+ Add New Book" />
-            </HBox>
+      <!-- Search and Filters -->
+      <HBox alignment="CENTER_LEFT" spacing="15" styleClass="filter-section">
+        <TextField fx:id="searchField" prefHeight="35" prefWidth="300" promptText="Search books..." styleClass="text-field" />
+        <ComboBox fx:id="filterCategory" prefWidth="150" promptText="Category" styleClass="combo-box" />
+        <ComboBox fx:id="filterStatus" prefWidth="150" promptText="Status" styleClass="combo-box" />
+        <Button styleClass="search-button" text="Search" />
+        <Button onAction="#handleClearFilters" styleClass="clear-button" text="Clear Filters" />
+      </HBox>
 
-            <!-- Search and Filters -->
-            <HBox alignment="CENTER_LEFT" spacing="15">
-                <TextField fx:id="searchField" promptText="Search books..." style="-fx-pref-width: 300; -fx-pref-height: 35;" />
-                <ComboBox fx:id="filterCategory" promptText="Category" style="-fx-pref-width: 150;" />
-                <ComboBox fx:id="filterStatus" promptText="Status" style="-fx-pref-width: 150;" />
-                <Button style="-fx-background-color: #2980B9; -fx-text-fill: white;" text="Search" />
-                <Button onAction="#handleClearFilters" style="-fx-background-color: #95A5A6; -fx-text-fill: white;" text="Clear Filters" />
-            </HBox>
-
-            <!-- Books Table -->
-            <TableView fx:id="bookTable" prefHeight="568.0" prefWidth="911.0" style="-fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
-                <columns>
-                    <TableColumn fx:id="titleCol" prefWidth="198.0" text="Title" />
-                    <TableColumn fx:id="authorCol" prefWidth="118.0" text="Author" />
-                    <TableColumn fx:id="isbnCol" prefWidth="122.0" text="ISBN" />
-                    <TableColumn fx:id="priceCol" prefWidth="94.0" text="Price ($)" />      
-                    <TableColumn fx:id="categoryCol" prefWidth="133.0" text="Category" />
-                    <TableColumn fx:id="quantityCol" prefWidth="95.0" text="Quantity" /> <!-- NEW -->
-                    <TableColumn fx:id="statusCol" prefWidth="118.0" text="Status" />
-                    <TableColumn fx:id="actionsCol" prefWidth="272.0" text="Actions" />
-                </columns>
-            </TableView>
-        </VBox>
-    </center>
+      <!-- Books Table -->
+      <TableView fx:id="bookTable" prefHeight="568.0" prefWidth="911.0" styleClass="book-table">
+        <columns>
+          <TableColumn fx:id="titleCol" prefWidth="198.0" styleClass="table-header" text="Title" />
+          <TableColumn fx:id="authorCol" prefWidth="118.0" styleClass="table-header" text="Author" />
+          <TableColumn fx:id="isbnCol" prefWidth="122.0" styleClass="table-header" text="ISBN" />
+          <TableColumn fx:id="priceCol" prefWidth="94.0" styleClass="table-header" text="Price ($)" />      
+          <TableColumn fx:id="categoryCol" prefWidth="133.0" styleClass="table-header" text="Category" />
+          <TableColumn fx:id="quantityCol" prefWidth="95.0" styleClass="table-header" text="Quantity" />
+          <TableColumn fx:id="statusCol" prefWidth="118.0" styleClass="table-header" text="Status" />
+          <TableColumn fx:id="actionsCol" prefWidth="272.0" styleClass="table-header" text="Actions" />
+        </columns>
+      </TableView>
+    </VBox>
+  </center>
 </BorderPane>

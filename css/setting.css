@@ -1,82 +1,204 @@
-/*
- * Empty Stylesheet file.
- */
-
-/* 🌟 Global Styles */
-.root {
-    -fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef); /* Soft gradient */
+/* Root BorderPane */
+.root-pane {
+    -fx-background-color: #D2B48C; /* Tan background for a warm base */
 }
 
-/* 🔹 Sidebar Styling */
-VBox {
-    -fx-background-color: #34495E;
-    -fx-padding: 30px 20px;
+/* Sidebar (Left VBox) */
+.sidebar {
+    -fx-background-color: #8B5A2B; /* Dark tan for a scroll-like sidebar */
+    -fx-padding: 30px;
 }
 
-VBox .button {
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-alignment: CENTER_LEFT;
-    -fx-font-size: 14px;
+/* Sidebar Title */
+.sidebar-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD700; /* Gold text */
 }
 
-VBox .button:hover {
-    -fx-background-color: #2C3E50;
-}
-
-/* ✨ Active Sidebar Button */
-#settingsButton {
-    -fx-background-color: #3498DB;
-    -fx-text-fill: white;
-}
-
-/* 📌 Header Styling */
-HBox {
-    -fx-background-color: #ECF0F1;
+/* Sidebar Buttons Container */
+.sidebar-menu {
+    -fx-background-color: #A0522D; /* Slightly lighter brown for contrast */
+    -fx-background-radius: 5px;
     -fx-padding: 15px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 6, 0, 0, 2);
 }
 
-Label {
-    -fx-text-fill: #2C3E50;
+/* Sidebar Buttons */
+.sidebar-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFF8DC; /* Parchment text */
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #D2691E; /* Chocolate brown on hover */
+}
+
+/* Active Sidebar Button (Settings) */
+.sidebar-button.active {
+    -fx-background-color: #DAA520; /* Goldenrod for active button */
+}
+
+/* Logout Button in Sidebar */
+.logout-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFF8DC; /* Parchment text */
+    -fx-background-color: #D2691E; /* Chocolate background to indicate action */
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #A0522D; /* Darker brown on hover */
+}
+
+/* Header (Top HBox) */
+.header {
+    -fx-background-color: #FFF8DC; /* Parchment header */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 6, 0, 0, 2);
+    -fx-padding: 15px;
+}
+
+/* Admin Name in Header */
+.admin-name {
+    -fx-font-family: "Georgia";
     -fx-font-size: 16px;
     -fx-font-weight: bold;
+    -fx-text-fill: #4A2C2A; /* Dark brown */
 }
 
-/* 📋 Settings Form Styling */
-.settings-form {
-    -fx-background-color: white;
-    -fx-border-radius: 10px;
-    -fx-padding: 20px;
-    -fx-border-color: #E0E0E0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+/* Center Content Area (VBox) */
+.main-content {
+    -fx-background-image: url("../img/green_texture.png"); /* Green textured background */
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-color: rgba(255, 245, 220, 0.3); /* Light parchment overlay for readability */
+    -fx-padding: 20px 30px;
 }
 
-.settings-form Label {
-    -fx-font-size: 14px;
-    -fx-text-fill: #2C3E50;
+/* Content Header (HBox) */
+.content-header {
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 10px;
 }
 
-.settings-form .text-field {
-    -fx-border-color: #BDC3C7;
+/* Content Title */
+.content-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A2C2A; /* Dark brown */
+}
+
+/* Account Information Card (VBox) */
+.account-card {
+    -fx-background-color: #F5F5DC; /* Beige background for a subtle contrast */
     -fx-background-radius: 5px;
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+}
+
+/* Section Title (Account Information) */
+.section-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A2C2A;
+}
+
+/* Form Grid (GridPane) */
+.form-grid {
+    -fx-hgap: 20px;
+    -fx-vgap: 15px;
+}
+
+/* Form Labels */
+.form-label {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: #4A2C2A;
+}
+
+/* Profile Picture Section (HBox) */
+.profile-pic-section {
+    -fx-spacing: 10px;
+}
+
+/* Profile Picture ImageView */
+.profile-pic {
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+}
+
+/* Change Profile Picture Button */
+.change-pic-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-background-color: #D2691E; /* Chocolate */
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.change-pic-button:hover {
+    -fx-background-color: #A0522D; /* Darker brown on hover */
+}
+
+/* Text Fields (First Name, Last Name, Email, Username) */
+.text-field {
+    -fx-background-color: #FFF8DC; /* Light parchment background */
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: #4A2C2A;
     -fx-padding: 8px;
 }
 
-.settings-form .text-field:focused {
-    -fx-border-color: #3498DB;
+.text-field:focused {
+    -fx-border-color: #DAA520; /* Goldenrod for focus state */
+    -fx-border-width: 2px;
 }
 
-/* 🛠 Buttons */
-.button {
+/* Password Fields (Password, Repeat Password) */
+.password-field {
+    -fx-background-color: #FFF8DC;
+    -fx-border-color: #8B4513;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-padding: 10px;
+    -fx-font-family: "Georgia";
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
-
+    -fx-text-fill: #4A2C2A;
+    -fx-padding: 8px;
 }
 
-.button:hover {
-    -fx-background-color: #27AE60;
+.password-field:focused {
+    -fx-border-color: #DAA520;
+    -fx-border-width: 2px;
+}
+
+/* Update Profile Button */
+.update-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
     -fx-text-fill: white;
+    -fx-background-color: #6B8E23; /* OliveDrab */
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.update-button:hover {
+    -fx-background-color: #556B2F; /* Darker OliveDrab on hover */
 }

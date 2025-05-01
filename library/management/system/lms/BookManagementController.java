@@ -5,11 +5,11 @@
  */
 package library.management.system.lms;
 
-import Class.Book;
-import Class.BookDAO;
-import Class.BookManager;
-import Class.UserIdAware;
-import Class.UserImageLoader;
+import model.Book;
+import data.BookDAO;
+import service.BookManager;
+import util.UserIdAware;
+import util.UserImageLoader;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -677,6 +677,16 @@ public class BookManagementController implements Initializable, UserIdAware {
         });
     }
 
+     public void handleLogout(ActionEvent event) throws IOException {
+    // Navigate to login page
+    Parent loginRoot = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    Scene scene = new Scene(loginRoot);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    
+}
+     
     @FXML
     private void handleClearFilters(ActionEvent event) {
         searchField.clear();

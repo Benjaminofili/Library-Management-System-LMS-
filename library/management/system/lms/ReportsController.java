@@ -5,12 +5,13 @@
  */
 package library.management.system.lms;
 
-import Class.BookDAO;
-import Class.UserIdAware;
-import Class.UserImageLoader;
+import data.ReportDao;
+import util.UserIdAware;
+import util.UserImageLoader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,15 +20,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -56,19 +60,45 @@ public class ReportsController implements Initializable, UserIdAware {
     @FXML
     private ImageView profilePic;
     @FXML
-    private LineChart<String, Number> borrowTrendChart;
-    @FXML
-    private Label totalBorrowedLabel;
-    @FXML
-    private VBox mostBorrowedBooksBox;
-    @FXML
-    private VBox mostActiveMembersBox;
-    @FXML
-    private BarChart<String, Number> borrowedBooksChart;
-@FXML private CategoryAxis xAxis;
-@FXML private NumberAxis yAxis;
+    private TableView<ReportDao.Transaction> transactionTable;
 
-    private final BookDAO bookDAO = new BookDAO();
+    @FXML
+    private TableColumn<ReportDao.Transaction, String> bookTitleColumn;
+
+    @FXML
+    private TableColumn<ReportDao.Transaction, String> borrowerNameColumn;
+
+    @FXML
+    private TableColumn<ReportDao.Transaction, String> borrowedDateColumn;
+
+    @FXML
+    private TableColumn<ReportDao.Transaction, String> dueDateColumn;
+
+    @FXML
+    private TableColumn<ReportDao.Transaction, String> statusColumn;
+
+    @FXML
+    private TableColumn<ReportDao.Transaction, Integer> cnrColumn;
+
+    @FXML
+    private Label totalBooksLabel;
+
+    @FXML
+    private Label booksBorrowedLabel;
+
+    @FXML
+    private Label registeredReadersLabel;
+
+    @FXML
+    private Label overdueBooksLabel;
+
+    @FXML
+    private PieChart categoryPieChart;
+
+    @FXML
+    private LineChart<String, Number> borrowingTrendsLineChart;
+
+    private ReportDao reportDao;
 
     private void loadUserImage() {
         Image userImage = UserImageLoader.loadUserImage(userId);
@@ -78,27 +108,69 @@ public class ReportsController implements Initializable, UserIdAware {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-//        loadChartData();
-        displayBorrowingStatistics();
-        displayBorrowingChart();
+        reportDao = new ReportDao();
+
+        // Initialize statistics cards
+        ReportDao.StatisticsData stats = reportDao.getStatisticsData();
+        totalBooksLabel.setText(String.valueOf(stats.getTotalBooks()));
+        booksBorrowedLabel.setText(String.valueOf(stats.getBooksBorrowed()));
+        registeredReadersLabel.setText(String.valueOf(stats.getRegisteredReaders()));
+        overdueBooksLabel.setText(String.valueOf(stats.getOverdueBooks()));
+
+        // Initialize transaction table
+     bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
+        bookTitleColumn.setCellFactory(column -> new TextFieldTableCell<ReportDao.Transaction, String>() {
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    Text text = new Text(item);
+                    text.setWrappingWidth(bookTitleColumn.getWidth() - 10); // Adjust for padding
+                    text.setStyle("-fx-font-family: Georgia; -fx-font-size: 14px; -fx-fill: #4A2C2A;");
+                    setGraphic(text);
+                    setText(null);
+                }
+            }
+        });
+
+        borrowerNameColumn.setCellValueFactory(new PropertyValueFactory<>("borrowerName"));
+        borrowerNameColumn.setCellFactory(column -> new TextFieldTableCell<ReportDao.Transaction, String>() {
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    Text text = new Text(item);
+                    text.setWrappingWidth(borrowerNameColumn.getWidth() - 10); // Adjust for padding
+                    text.setStyle("-fx-font-family: Georgia; -fx-font-size: 14px; -fx-fill: #4A2C2A;");
+                    setGraphic(text);
+                    setText(null);
+                }
+            }
+        });
+
+        borrowedDateColumn.setCellValueFactory(new PropertyValueFactory<>("borrowedDate"));
+        dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        cnrColumn.setCellValueFactory(new PropertyValueFactory<>("transactionId"));
+        transactionTable.setItems(reportDao.getTransactionData());
+
+        // Initialize pie chart
+        categoryPieChart.setData(reportDao.getCategoryDistributionData());
+        categoryPieChart.setLegendVisible(true);
+        categoryPieChart.setTitle("Category Distribution");
+
+        // Initialize line chart
+        borrowingTrendsLineChart.setData(reportDao.getBorrowingTrendsData());
+        borrowingTrendsLineChart.setTitle("Borrowing Trends (Last Week)");
+
     }
-
-    private void loadChartData() {
-        // Create a new series for "Borrow Trend"
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Borrow Trend");
-
-        // Populate the series with data. Replace these with real values as needed.
-        series.getData().add(new XYChart.Data<>("Jan", 20));
-        series.getData().add(new XYChart.Data<>("Feb", 35));
-        series.getData().add(new XYChart.Data<>("Mar", 40));
-        series.getData().add(new XYChart.Data<>("Apr", 30));
-        series.getData().add(new XYChart.Data<>("May", 50));
-
-        // Clear any previous data and add the new series
-        borrowTrendChart.getData().clear();
-        borrowTrendChart.getData().add(series);
-    }
+    
 
     @FXML
     private void handleNavigation(ActionEvent event) {
@@ -145,44 +217,13 @@ public class ReportsController implements Initializable, UserIdAware {
         }
     }
 
-    private void displayBorrowingStatistics() {
-        int totalBorrowed = bookDAO.getTotalBooksBorrowed();
-        List<String> mostBorrowedBooks = bookDAO.getMostBorrowedBooks();
-        List<String> mostActiveMembers = bookDAO.getMostActiveMembers();
+    public void handleLogout(ActionEvent event) throws IOException {
+        // Navigate to login page
+        Parent loginRoot = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene scene = new Scene(loginRoot);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
 
-        totalBorrowedLabel.setText("📚 Total Books Borrowed: " + totalBorrowed);
-
-        mostBorrowedBooksBox.getChildren().clear();
-        mostBorrowedBooks.forEach(book -> mostBorrowedBooksBox.getChildren().add(new Label(book)));
-
-        mostActiveMembersBox.getChildren().clear();
-        mostActiveMembers.forEach(member -> mostActiveMembersBox.getChildren().add(new Label(member)));
     }
-
- private void displayBorrowingChart() {
-    // Set up X and Y axes
-    xAxis.setLabel("Book Title");
-    yAxis.setLabel("Times Borrowed");
-
-    borrowedBooksChart.setTitle("Most Borrowed Books");
-    borrowedBooksChart.getData().clear(); // Clear previous data
-
-    // Get data from BookDAO
-    BookDAO bookDAO = new BookDAO();
-    List<String> mostBorrowedBooks = bookDAO.getMostBorrowedBooks();
-
-    XYChart.Series<String, Number> series = new XYChart.Series<>();
-    series.setName("Borrowing Frequency");
-
-    mostBorrowedBooks.forEach((book) -> {
-        // Extract title and borrow count from formatted string
-        String title = book.split(" \\(")[0]; // Gets the book title
-        int count = Integer.parseInt(book.replaceAll("\\D+", "")); // Gets the borrow count
-
-        series.getData().add(new XYChart.Data<>(title, count));
-        });
-
-    borrowedBooksChart.getData().add(series);
-}
-
 }

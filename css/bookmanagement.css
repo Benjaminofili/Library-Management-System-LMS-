@@ -1,53 +1,202 @@
-/*
- * Empty Stylesheet file.
- */
-.root {
-    -fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+/* Root BorderPane */
+.root-pane {
+    -fx-background-color: #D2B48C; /* Tan background for a warm base */
 }
 
-.table-view {
-    -fx-background-color: white;
-    -fx-border-color: #ddd;
-    -fx-border-radius: 5px;
+/* Sidebar (Left VBox) */
+.sidebar {
+    -fx-background-color: #8B5A2B; /* Dark tan for a scroll-like sidebar */
+    -fx-padding: 30px;
 }
 
-.table-row-cell:odd {
-    -fx-background-color: #f9f9f9;
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #3498DB;
-    -fx-text-fill: white;
-}
-
-.table-view .table-cell {
-    -fx-wrap-text: true;
-    -fx-padding: 5px;
-}
-.table-row-cell:hover {
-    -fx-background-color: #e0f7fa; /* Light blue hover */
-    -fx-text-fill: black;
-}
-
-.button {
-    -fx-font-size: 14px;
+/* Sidebar Title */
+.sidebar-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
+    -fx-text-fill: #FFD700; /* Gold text */
 }
 
-.button:hover {
-    -fx-background-color: #2980B9 !important;
-    -fx-text-fill: white !important;
+/* Sidebar Buttons Container */
+.sidebar-menu {
+    -fx-background-color: #A0522D; /* Slightly lighter brown for contrast */
+    -fx-background-radius: 5px;
+    -fx-padding: 15px;
+}
+
+/* Sidebar Buttons */
+.sidebar-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFF8DC; /* Parchment text */
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 5px;
     -fx-cursor: hand;
 }
 
-
-/* Selected state */
-.button:selected {
-    -fx-background-color: #3498DB;
-    -fx-text-fill: white;
+.sidebar-button:hover {
+    -fx-background-color: #D2691E; /* Chocolate brown on hover */
 }
 
-/* Profile image circle */
-.image-view {
-    -fx-clip: circle(19px center);
+/* Active Sidebar Button (Book Management) */
+.sidebar-button.active {
+    -fx-background-color: #DAA520; /* Goldenrod for active button */
+}
+
+.logout-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFF8DC; /* Parchment text */
+    -fx-background-color: #D2691E; /* Chocolate background to indicate action */
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #A0522D; /* Darker brown on hover */
+}
+
+/* Header (Top HBox) */
+.header {
+    -fx-background-color: #FFF8DC; /* Parchment header */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 6, 0, 0, 2);
+    -fx-padding: 15px;
+}
+
+/* Admin Name in Header */
+.admin-name {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A2C2A; /* Dark brown */
+}
+
+/* Center Content Area (VBox) */
+.main-content {
+    -fx-background-image: url("../img/green_texture.png"); /* Green textured background */
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-color: rgba(255, 245, 220, 0.3); /* Light parchment overlay for readability */
+    -fx-padding: 30px;
+}
+
+/* Content Header (HBox) */
+.content-header {
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 20px;
+}
+
+/* Content Title */
+.content-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A2C2A; /* Dark brown */
+}
+
+/* Add Book Button */
+.add-book-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-background-color: #6B8E23; /* OliveDrab */
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.add-book-button:hover {
+    -fx-background-color: #556B2F; /* Darker OliveDrab on hover */
+}
+
+/* Filter Section (HBox) */
+.filter-section {
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 15px;
+}
+
+/* TextField (Search Field) */
+.text-field {
+    -fx-background-color: #FFF8DC; /* Light parchment background */
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: #4A2C2A;
+    -fx-prompt-text-fill: #808080; /* Gray prompt text */
+    -fx-padding: 8px;
+}
+
+.text-field:focused {
+    -fx-border-color: #DAA520; /* Goldenrod for focus state */
+    -fx-border-width: 2px;
+}
+
+/* ComboBox (Filters) */
+.combo-box {
+    -fx-background-color: #FFF8DC;
+    -fx-border-color: #8B4513;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+}
+
+.combo-box:focused {
+    -fx-border-color: #DAA520;
+    -fx-border-width: 2px;
+}
+
+/* Search Button */
+.search-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-background-color: #D2691E; /* Chocolate */
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.search-button:hover {
+    -fx-background-color: #A0522D; /* Darker brown on hover */
+}
+
+/* Clear Filters Button */
+.clear-button {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-background-color: #8B4513; /* Saddle brown */
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.clear-button:hover {
+    -fx-background-color: #5C2D1A; /* Darker saddle brown on hover */
+}
+
+/* Books Table */
+.book-table {
+    -fx-background-color: #FFF8DC; /* Parchment background */
+    -fx-border-color: #8B4513;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+}
+
+.book-table .column-header {
+    -fx-background-color: #DAA520; /* Goldenrod header */
+    -fx-text-fill: #4A2C2A;
+    -fx-font-weight: bold;
+}
+
+.book-table .table-cell {
+    -fx-text-fill: #4A2C2A;
 }

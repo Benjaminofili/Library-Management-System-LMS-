@@ -1,7 +1,111 @@
-/*
- * Empty Stylesheet file.
- */
+/* Root AnchorPane with background image and overlay */
+AnchorPane {
+    -fx-background-image: url(../img/bg0.png);
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay to dim the background */
+}
 
-.mainFxmlClass {
+/* Pane wrapping the form */
+.form-pane {
+    -fx-background-color: rgba(245, 245, 220, 0.95); /* Parchment-like background with slight transparency */
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0.5, 0, 0); /* Stronger shadow for prominence */
+}
 
+/* Form container styling (VBox) */
+.form-container {
+    -fx-padding: 20px;
+    -fx-background-color: transparent; /* No background, as the Pane handles it */
+}
+
+/* Title styling */
+.title-label {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A2C2A; /* Dark brown for a classic look */
+    -fx-alignment: center;
+}
+
+/* TextField and PasswordField styling */
+.text-field, .password-field {
+    -fx-background-color: #FFF8DC; /* Light parchment background */
+    -fx-border-color: #8B4513; /* Saddle brown border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: #4A2C2A;
+    -fx-prompt-text-fill: #808080; /* Gray prompt text */
+    -fx-padding: 8px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #DAA520; /* Goldenrod for focus state */
+    -fx-border-width: 2px;
+}
+
+/* Authorization Code field (distinct) */
+.auth-field {
+    -fx-background-color: #FFF8DC;
+    -fx-border-color: #DAA520; /* Goldenrod border to make it distinct */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-text-fill: #4A2C2A;
+    -fx-prompt-text-fill: #808080;
+    -fx-padding: 8px;
+}
+
+.auth-field:focused {
+    -fx-border-color: #FFD700; /* Brighter gold on focus */
+    -fx-border-width: 2px;
+}
+
+/* Button styling */
+.signup-button {
+    -fx-background-color: #8B4513; /* Saddle brown background */
+    -fx-text-fill: #FFD700; /* Gold text */
+    -fx-font-family: "Georgia";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+}
+
+/* Button hover effect */
+.signup-button:hover {
+    -fx-background-color: #A0522D; /* Lighter brown on hover */
+}
+
+/* Status label */
+.status-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #8B0000; /* Dark red for error messages */
+    -fx-font-family: "Georgia";
+    -fx-alignment: center;
+}
+
+/* Hyperlink styling */
+.hyperlink {
+    -fx-text-fill: #4682B4; /* Steel blue to match the "Sign in" link */
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-border-width: 0px;
+    -fx-alignment: center;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #87CEEB; /* Light sky blue on hover */
+    -fx-underline: true;
 }

@@ -19,7 +19,7 @@ public class LibraryManagementSystemLMS extends Application {
     
   @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Reports.fxml"));
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
@@ -30,7 +30,7 @@ public class LibraryManagementSystemLMS extends Application {
         primaryStage.setHeight(800);
         primaryStage.setMaxWidth(1440);
         primaryStage.setMaxHeight(1024);
-        primaryStage.setResizable(false); // Optional
+//        primaryStage.setResizable(false); // Optional
 
         primaryStage.show();
     }

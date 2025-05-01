@@ -5,19 +5,18 @@
  */
 package library.management.system.lms;
 
-import Class.BookManager;
-import Class.Member;
-import Class.MemberDAO;
-import Class.MemberDialogHelper;
-import Class.User;
-import Class.UserIdAware;
-import Class.UserImageLoader;
+import service.BookManager;
+import model.Member;
+import data.MemberDAO;
+import service.MemberDialogHelper;
+import model.User;
+import util.UserIdAware;
+import util.UserImageLoader;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -345,6 +344,16 @@ public class MemberManagementController implements Initializable, UserIdAware {
             }
         });
     }
+    
+     public void handleLogout(ActionEvent event) throws IOException {
+    // Navigate to login page
+    Parent loginRoot = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    Scene scene = new Scene(loginRoot);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    
+}
 
     // Utility method to display alerts.
     private void showAlert(AlertType type, String title, String message) {

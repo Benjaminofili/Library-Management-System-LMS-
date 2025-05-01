@@ -1,3 +1,13 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01-May-2025, 20:05:15
+    Author     : benja
+*/
+
 /* DialogPane Styling */
 .dialog-pane {
     -fx-background-image: url("../img/green_texture.png"); /* Green textured background */
@@ -54,60 +64,7 @@
     -fx-border-width: 2px;
 }
 
-/* ComboBox */
-.dialog-pane .combo-box {
-    -fx-background-color: #FFF8DC;
-    -fx-border-color: #8B4513;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-font-family: "Georgia";
-    -fx-font-size: 14px;
-}
-
-.dialog-pane .combo-box .list-cell {
-    -fx-text-fill: #4A2C2A;
-    -fx-font-family: "Georgia";
-    -fx-font-size: 14px;
-    -fx-background-color: #FFF8DC;
-}
-
-.dialog-pane .combo-box .list-cell:hover {
-    -fx-background-color: #FDF5E6; /* Slightly darker parchment on hover */
-}
-
-.dialog-pane .combo-box .list-view {
-    -fx-background-color: #FFF8DC;
-    -fx-border-color: #8B4513;
-    -fx-border-width: 1px;
-}
-
-/* "OR" Label in AddBookDialog */
-.dialog-pane .or-label {
-    -fx-font-family: "Georgia";
-    -fx-font-size: 14px;
-    -fx-text-fill: #4A2C2A;
-    -fx-alignment: center;
-}
-
-/* CheckBox */
-.dialog-pane .check-box {
-    -fx-font-family: "Georgia";
-    -fx-font-size: 14px;
-    -fx-text-fill: #4A2C2A;
-}
-
-.dialog-pane .check-box .box {
-    -fx-background-color: #FFF8DC;
-    -fx-border-color: #8B4513;
-    -fx-border-width: 1px;
-    -fx-border-radius: 3px;
-}
-
-.dialog-pane .check-box:selected .mark {
-    -fx-background-color: #4A2C2A; /* Dark brown checkmark */
-}
-
-/* Buttons (OK, Cancel) */
+/* Buttons (Add/Update, Cancel) */
 .dialog-pane .button-bar .button {
     -fx-font-family: "Georgia";
     -fx-font-size: 14px;

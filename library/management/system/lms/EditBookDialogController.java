@@ -5,7 +5,7 @@
  */
 package library.management.system.lms;
 
-import Class.Book;
+import model.Book;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;

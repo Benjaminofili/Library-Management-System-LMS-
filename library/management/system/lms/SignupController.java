@@ -5,7 +5,7 @@
  */
 package library.management.system.lms;
 
-import Class.Myconnection;
+import data.Myconnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;

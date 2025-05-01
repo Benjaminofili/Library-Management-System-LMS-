@@ -5,9 +5,9 @@
  */
 package library.management.system.lms;
 
-import Class.Book;
-import Class.BookDAO;
-import Class.ISBNValidator;
+import model.Book;
+import data.BookDAO;
+import service.ISBNValidator;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
