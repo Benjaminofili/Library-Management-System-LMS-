@@ -19,7 +19,7 @@ public class LibraryManagementSystemLMS extends Application {
     
   @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Reports.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);

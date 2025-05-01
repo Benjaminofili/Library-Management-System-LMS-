@@ -1,5 +1,6 @@
 package library.management.system.lms;
 
+import data.ForgotPasswordHandler;
 import data.Myconnection;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -29,12 +31,14 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField Pfield;
 
-    @FXML
-    private int currentUserId;
+ @FXML
+    private Hyperlink forgotPasswordLink;
+
+    private Myconnection dbConnection;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // No special initialization needed here
+         dbConnection = Myconnection.getInstance();
     }
 
     public void handleLogin(ActionEvent event) {
@@ -126,6 +130,12 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             System.out.println("Error loading Signup.fxml");
         }
+    }
+    
+        @FXML
+    public void handleForgotPassword() {
+        ForgotPasswordHandler forgotPasswordHandler = new ForgotPasswordHandler();
+        forgotPasswordHandler.handleForgotPassword();
     }
 
     private void showErrorAlert(String msg) {

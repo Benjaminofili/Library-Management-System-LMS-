@@ -40,7 +40,7 @@
                         <Label styleClass="form-label" text="Password" />
                         <PasswordField fx:id="Pfield" prefHeight="46.0" prefWidth="336.0" styleClass="password-field" />
 
-                        <Hyperlink styleClass="hyperlink" text="Forgot Password" />
+                        <Hyperlink fx:id="forgotPasswordLink" onAction="#handleForgotPassword" styleClass="hyperlink" text="Forgot Password" />
                         
                         <!-- Added Sign-Up Hyperlink -->
                         <Hyperlink fx:id="signUpLink" onAction="#handleSignupRedirect" styleClass="hyperlink" text="Don't have an account? Sign up here!" />
